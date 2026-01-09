@@ -130,11 +130,11 @@ export default function LandingPage() {
           >
             {/* Close Button - Fixed Position */}
             <button
-              onClick={() => setShowThankYou(false)}
-              className="fixed top-6 right-6 z-[110] p-3 rounded-full bg-zinc-800 hover:bg-zinc-700 transition-colors border border-zinc-700"
+              onClick={(e) => { e.stopPropagation(); setShowThankYou(false); }}
+              className="fixed top-4 right-4 z-[110] p-2.5 rounded-full bg-zinc-800/90 hover:bg-zinc-700 transition-colors border border-zinc-600 backdrop-blur-sm"
               data-testid="close-thank-you"
             >
-              <X className="w-5 h-5 text-white" />
+              <X className="w-6 h-6 text-white" />
             </button>
 
             {/* Scrollable Content Container */}
