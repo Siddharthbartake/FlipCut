@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { 
@@ -11,11 +11,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useAuth } from "@/App";
-import { LogOut, LayoutDashboard, User } from "lucide-react";
+import { LogOut, LayoutDashboard, Heart } from "lucide-react";
 
-export const Navbar = () => {
+export const Navbar = ({ onOpenThankYou }) => {
   const { user, loading, login, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const isLanding = location.pathname === '/';
 
   return (
     <motion.nav
@@ -26,22 +28,50 @@ export const Navbar = () => {
       data-testid="navbar"
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between">
-        {/* Logo */}
-        <Link 
-          to="/" 
-          className="flex items-center gap-3 group"
-          data-testid="logo-link"
-        >
-          <div className="w-9 h-9 rounded-xl bg-white flex items-center justify-center group-hover:scale-105 transition-transform">
-            <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
-              <path d="M4 4L10 12L4 20H8L14 12L8 4H4Z" fill="black"/>
-              <path d="M12 4L18 12L12 20H16L22 12L16 4H12Z" fill="black" fillOpacity="0.5"/>
-            </svg>
-          </div>
-          <span className="text-lg font-semibold text-white tracking-tight">FlipCut</span>
-        </Link>
+        {/* Left - Thank You Button (only on landing) */}
+        {isLanding && onOpenThankYou ? (
+          <button
+            onClick={onOpenThankYou}
+            className="flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900 border border-zinc-800 hover:border-zinc-700 transition-colors text-sm"
+            data-testid="thank-uplane-btn"
+          >
+            <Heart className="w-4 h-4 text-red-500" />
+            <span className="text-zinc-300">For Uplane</span>
+          </button>
+        ) : (
+          <Link 
+            to="/" 
+            className="flex items-center gap-3 group"
+            data-testid="logo-link"
+          >
+            <div className="w-9 h-9 rounded-xl bg-white flex items-center justify-center group-hover:scale-105 transition-transform">
+              <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+                <path d="M4 4L10 12L4 20H8L14 12L8 4H4Z" fill="black"/>
+                <path d="M12 4L18 12L12 20H16L22 12L16 4H12Z" fill="black" fillOpacity="0.5"/>
+              </svg>
+            </div>
+            <span className="text-lg font-semibold text-white tracking-tight">FlipCut</span>
+          </Link>
+        )}
 
-        {/* Navigation */}
+        {/* Center - Logo (only on landing) */}
+        {isLanding && (
+          <Link 
+            to="/" 
+            className="flex items-center gap-3 group absolute left-1/2 -translate-x-1/2"
+            data-testid="logo-link-center"
+          >
+            <div className="w-9 h-9 rounded-xl bg-white flex items-center justify-center group-hover:scale-105 transition-transform">
+              <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+                <path d="M4 4L10 12L4 20H8L14 12L8 4H4Z" fill="black"/>
+                <path d="M12 4L18 12L12 20H16L22 12L16 4H12Z" fill="black" fillOpacity="0.5"/>
+              </svg>
+            </div>
+            <span className="text-lg font-semibold text-white tracking-tight">FlipCut</span>
+          </Link>
+        )}
+
+        {/* Right - Nav + CTA */}
         <div className="flex items-center gap-4">
           {loading ? (
             <div className="w-24 h-9 rounded-full bg-zinc-900 animate-pulse" />
