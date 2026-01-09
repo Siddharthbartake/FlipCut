@@ -32,11 +32,15 @@ export const Navbar = ({ onOpenThankYou }) => {
         {isLanding && onOpenThankYou ? (
           <button
             onClick={onOpenThankYou}
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900 border border-zinc-800 hover:border-zinc-700 transition-colors text-sm"
+            className="group relative overflow-hidden rounded-full px-5 py-2.5 bg-zinc-900 border border-zinc-700 hover:border-zinc-500 transition-all duration-300"
             data-testid="thank-uplane-btn"
           >
-            <Heart className="w-4 h-4 text-red-500" />
-            <span className="text-zinc-300">My message to Uplane Team</span>
+            {/* Spotlight effect */}
+            <span className="absolute inset-0 overflow-hidden rounded-full">
+              <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.2)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            </span>
+            <span className="absolute inset-0 rounded-full opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-gradient-to-b from-zinc-700/50 to-transparent" />
+            <span className="relative text-sm text-zinc-300 group-hover:text-white transition-colors">My message to Uplane Team</span>
           </button>
         ) : (
           <Link 
