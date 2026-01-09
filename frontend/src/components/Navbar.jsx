@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useAuth } from "@/App";
-import { LogOut, LayoutDashboard, Heart } from "lucide-react";
+import { LogOut, LayoutDashboard } from "lucide-react";
 
 export const Navbar = ({ onOpenThankYou }) => {
   const { user, loading, login, logout } = useAuth();
