@@ -36,7 +36,7 @@ export const Navbar = ({ onOpenThankYou }) => {
             data-testid="thank-uplane-btn"
           >
             <Heart className="w-4 h-4 text-red-500" />
-            <span className="text-zinc-300">For Uplane</span>
+            <span className="text-zinc-300">My message to Uplane Team</span>
           </button>
         ) : (
           <Link 
