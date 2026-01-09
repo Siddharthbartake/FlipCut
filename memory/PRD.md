@@ -37,7 +37,7 @@ FlipCut is an AI-powered image processing application that removes backgrounds f
 
 ## What's Been Implemented
 
-### January 2025
+### January 2025 - MVP Release
 - **Backend (FastAPI)**
   - Auth endpoints: /api/auth/session, /api/auth/me, /api/auth/logout
   - Image endpoints: upload, process, list, get, delete
@@ -59,6 +59,18 @@ FlipCut is an AI-powered image processing application that removes backgrounds f
   - Users collection
   - User sessions collection
   - Images collection with status tracking
+
+### January 2025 - UI Enhancement
+- **Premium UI Components (from ui-layouts.com & lunarui.dev)**
+  - Sparkles particle effect on hero section
+  - Spotlight cards with mouse-following glow
+  - Grid & Dot pattern backgrounds
+  - Before/After slider for image comparison
+  - Glow buttons with hover effects
+  - Border beam animated buttons
+  - Animated number counters for stats
+  - Enhanced processing step indicators
+  - Glassmorphism effects throughout
 
 ## Tech Stack
 - Frontend: React 19, TailwindCSS, shadcn/ui, Framer Motion
