@@ -125,110 +125,114 @@ export default function LandingPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-start justify-center bg-black/95 backdrop-blur-sm overflow-y-auto py-8"
+            className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm"
             onClick={() => setShowThankYou(false)}
           >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              transition={{ type: 'spring', damping: 25 }}
-              className="relative max-w-2xl w-full mx-4 bg-zinc-900 border border-zinc-800 rounded-3xl p-8 md:p-12 my-auto"
-              onClick={(e) => e.stopPropagation()}
+            {/* Close Button - Fixed Position */}
+            <button
+              onClick={() => setShowThankYou(false)}
+              className="fixed top-6 right-6 z-[110] p-3 rounded-full bg-zinc-800 hover:bg-zinc-700 transition-colors border border-zinc-700"
+              data-testid="close-thank-you"
             >
-              <button
-                onClick={() => setShowThankYou(false)}
-                className="absolute top-4 right-4 p-2 rounded-full hover:bg-zinc-800 transition-colors z-10"
-                data-testid="close-thank-you"
+              <X className="w-5 h-5 text-white" />
+            </button>
+
+            {/* Scrollable Content Container */}
+            <div className="h-full overflow-y-auto py-8 px-4">
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0, y: 20 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.95, opacity: 0, y: 20 }}
+                transition={{ type: 'spring', damping: 25 }}
+                className="max-w-2xl mx-auto bg-zinc-900 border border-zinc-800 rounded-3xl p-8 md:p-12"
+                onClick={(e) => e.stopPropagation()}
               >
-                <X className="w-5 h-5 text-zinc-400" />
-              </button>
-
-              {/* Uplane Image */}
-              <div className="flex justify-center mb-8">
-                <img 
-                  src="https://customer-assets.emergentagent.com/job_flipcut-1/artifacts/z08veiz0_image.png"
-                  alt="Uplane Team"
-                  className="w-full max-w-md rounded-2xl border border-zinc-800"
-                />
-              </div>
-
-              <div className="text-center space-y-6">
-                <div className="flex items-center justify-center gap-2 text-zinc-500 text-sm">
-                  <Heart className="w-4 h-4 text-red-500" />
-                  <span>A Personal Note</span>
+                {/* Uplane Image */}
+                <div className="flex justify-center mb-8">
+                  <img 
+                    src="https://customer-assets.emergentagent.com/job_flipcut-1/artifacts/z08veiz0_image.png"
+                    alt="Uplane Team"
+                    className="w-full max-w-md rounded-2xl border border-zinc-800"
+                  />
                 </div>
 
-                {/* Text Reveal Title */}
-                <motion.h2
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2, duration: 0.6 }}
-                  className="text-2xl md:text-3xl font-semibold text-white"
-                >
-                  Thank You, Uplane Team
-                </motion.h2>
+                <div className="text-center space-y-6">
+                  <div className="flex items-center justify-center gap-2 text-zinc-500 text-sm">
+                    <Heart className="w-4 h-4 text-red-500" />
+                    <span>A Personal Note</span>
+                  </div>
 
-                {/* Text Reveal Description */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.4, duration: 0.8 }}
-                  className="space-y-4 text-zinc-400 text-left leading-relaxed"
-                >
-                  <motion.p
-                    initial={{ opacity: 0, y: 15 }}
+                  {/* Text Reveal Title */}
+                  <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
+                    transition={{ delay: 0.2, duration: 0.6 }}
+                    className="text-2xl md:text-3xl font-semibold text-white"
                   >
-                    <span className="text-white font-medium">To Mr. Marvin</span> — Thank you for giving me the chance to connect with you on LinkedIn and for the opportunity to interview at Uplane. Your openness to hear from aspiring developers means the world.
-                  </motion.p>
-                  
-                  <motion.p
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.7 }}
-                  >
-                    <span className="text-white font-medium">To Mr. Julius</span> — Thank you for the insightful interview. Learning about what Uplane does, how it works, and the impact you're creating was truly inspiring. It was a delightful conversation that reinforced my excitement about this opportunity.
-                  </motion.p>
-                  
-                  <motion.p
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.9 }}
-                  >
-                    <span className="text-white font-medium">To Mr. Lukas</span> — Thank you for the take-home assignment. Building FlipCut was a great way to showcase my skills, and I genuinely enjoyed the challenge.
-                  </motion.p>
+                    Thank You, Uplane Team
+                  </motion.h2>
 
-                  <motion.p
+                  {/* Text Reveal Description */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.4, duration: 0.8 }}
+                    className="space-y-4 text-zinc-400 text-left leading-relaxed"
+                  >
+                    <motion.p
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5 }}
+                    >
+                      <span className="text-white font-medium">To Mr. Marvin</span> — Thank you for giving me the chance to connect with you on LinkedIn and for the opportunity to interview at Uplane. Your openness to hear from aspiring developers means the world.
+                    </motion.p>
+                    
+                    <motion.p
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.7 }}
+                    >
+                      <span className="text-white font-medium">To Mr. Julius</span> — Thank you for the insightful interview. Learning about what Uplane does, how it works, and the impact you're creating was truly inspiring. It was a delightful conversation that reinforced my excitement about this opportunity.
+                    </motion.p>
+                    
+                    <motion.p
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.9 }}
+                    >
+                      <span className="text-white font-medium">To Mr. Lukas</span> — Thank you for the take-home assignment. Building FlipCut was a great way to showcase my skills, and I genuinely enjoyed the challenge.
+                    </motion.p>
+
+                    <motion.p
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 1.1 }}
+                      className="text-white font-medium pt-4 text-center"
+                    >
+                      I'm excited about the opportunity to speak with you soon! 🚀
+                    </motion.p>
+                  </motion.div>
+
+                  <motion.div
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.1 }}
-                    className="text-white font-medium pt-4 text-center"
+                    transition={{ delay: 1.3 }}
+                    className="pt-6"
                   >
-                    I'm excited about the opportunity to speak with you soon! 🚀
-                  </motion.p>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.3 }}
-                  className="pt-6"
-                >
-                  <a
-                    href="https://drive.google.com/file/d/1hCMZT19cyj_4rixefSKHuNDy0DpbImHN/view?usp=sharing"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-medium hover:bg-zinc-200 transition-colors"
-                    data-testid="portfolio-link"
-                  >
-                    Want to know more about my skills?
-                    <ArrowUpRight className="w-4 h-4" />
-                  </a>
-                </motion.div>
-              </div>
-            </motion.div>
+                    <a
+                      href="https://drive.google.com/file/d/1hCMZT19cyj_4rixefSKHuNDy0DpbImHN/view?usp=sharing"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-full font-medium hover:bg-zinc-200 transition-colors"
+                      data-testid="portfolio-link"
+                    >
+                      Want to know more about my skills?
+                      <ArrowUpRight className="w-4 h-4" />
+                    </a>
+                  </motion.div>
+                </div>
+              </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
